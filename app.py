@@ -1,4 +1,4 @@
-pythonimport os, json, re, datetime, requests
+import os, json, re, datetime, requests
 
 from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
