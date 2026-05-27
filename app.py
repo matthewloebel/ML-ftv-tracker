@@ -1,4 +1,3 @@
-Select all (Ctrl+A), delete, paste this:
 pythonimport os, json, re, datetime, requests
 
 from flask import Flask, jsonify, request, send_from_directory
