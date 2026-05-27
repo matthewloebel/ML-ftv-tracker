@@ -1,4 +1,4 @@
-Select all (Ctrl+A), delete everything, then paste this entire file:
+Select all (Ctrl+A), delete, paste this:
 pythonimport os, json, re, datetime, requests
 
 from flask import Flask, jsonify, request, send_from_directory
@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__, static_folder="static")
-CORS(app)
+CORS(app, origins="*")
 
 DATA_FILE = "data/outreach.json"
 os.makedirs("data", exist_ok=True)
@@ -35,10 +35,6 @@ def domain_from_email(email):
 
 @app.route("/api/ingest", methods=["POST"])
 def ingest():
-    """
-    Receives structured outreach data pushed from Claude via M365 MCP.
-    Body: { "sent": [...], "inbox": [...] }
-    """
     try:
         body = request.json
         sent_messages = body.get("sent", [])
